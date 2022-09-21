@@ -223,7 +223,7 @@ References:
 
 			
 				
-				<h3 id="RabbitMQConnectionResolver.Compose">func (*RabbitMQConnectionResolver) <a href="http://localhost:6060/src/connect/RabbitMQConnectionResolver.go?s=5812:5990#L152">Compose</a>
+				<h3 id="RabbitMQConnectionResolver.Compose">func (*RabbitMQConnectionResolver) <a href="http://localhost:6060/src/connect/RabbitMQConnectionResolver.go?s=5903:6081#L155">Compose</a>
 					<a class="permalink" href="index.html#RabbitMQConnectionResolver.Compose">&#xb6;</a>
 					
 					
@@ -233,7 +233,8 @@ References:
 Compose method are composes RabbitMQ connection options from connection and credential parameters.
 Parameters:
 </p>
-<pre>- correlationId  string  (optional) transaction id to trace execution through call chain.
+<pre>- ctx context.Context
+- correlationId  string  (optional) transaction id to trace execution through call chain.
 - connection  *ccon.ConnectionParams    connection parameters
 - credential  *cauth.CredentialParams   credential parameters
 </pre>
@@ -247,7 +248,7 @@ resolved options or error.
 				
 			
 				
-				<h3 id="RabbitMQConnectionResolver.Configure">func (*RabbitMQConnectionResolver) <a href="http://localhost:6060/src/connect/RabbitMQConnectionResolver.go?s=1969:2064#L41">Configure</a>
+				<h3 id="RabbitMQConnectionResolver.Configure">func (*RabbitMQConnectionResolver) <a href="http://localhost:6060/src/connect/RabbitMQConnectionResolver.go?s=1996:2091#L42">Configure</a>
 					<a class="permalink" href="index.html#RabbitMQConnectionResolver.Configure">&#xb6;</a>
 					
 					
@@ -257,7 +258,8 @@ resolved options or error.
 Configure are configures component by passing configuration parameters.
 Parameters:
 </p>
-<pre>- config   *cconf.ConfigParams
+<pre>- ctx context.Context
+- config   *cconf.ConfigParams
 </pre>
 <p>
 configuration parameters to be set.
@@ -268,7 +270,7 @@ configuration parameters to be set.
 				
 			
 				
-				<h3 id="RabbitMQConnectionResolver.Resolve">func (*RabbitMQConnectionResolver) <a href="http://localhost:6060/src/connect/RabbitMQConnectionResolver.go?s=4658:4765#L121">Resolve</a>
+				<h3 id="RabbitMQConnectionResolver.Resolve">func (*RabbitMQConnectionResolver) <a href="http://localhost:6060/src/connect/RabbitMQConnectionResolver.go?s=4725:4832#L123">Resolve</a>
 					<a class="permalink" href="index.html#RabbitMQConnectionResolver.Resolve">&#xb6;</a>
 					
 					
@@ -278,8 +280,8 @@ configuration parameters to be set.
 Resolves RabbitMQ connection options from connection and credential parameters.
 Parameters:
 </p>
-<pre>- correlationId   string
-(optional) transaction id to trace execution through call chain.
+<pre>- ctx context.Context
+- correlationId (optional) transaction id to trace execution through call chain.
 </pre>
 <p>
 Retruns options *cconf.ConfigParams, err error
@@ -291,7 +293,7 @@ receives resolved options or error.
 				
 			
 				
-				<h3 id="RabbitMQConnectionResolver.SetReferences">func (*RabbitMQConnectionResolver) <a href="http://localhost:6060/src/connect/RabbitMQConnectionResolver.go?s=2333:2433#L50">SetReferences</a>
+				<h3 id="RabbitMQConnectionResolver.SetReferences">func (*RabbitMQConnectionResolver) <a href="http://localhost:6060/src/connect/RabbitMQConnectionResolver.go?s=2387:2487#L52">SetReferences</a>
 					<a class="permalink" href="index.html#RabbitMQConnectionResolver.SetReferences">&#xb6;</a>
 					
 					
@@ -301,9 +303,12 @@ receives resolved options or error.
 SetReferences are sets references to dependent components.
 Parameters:
 </p>
-<pre> - references  cref.IReferences
-	references to locate the component dependencies.
+<pre>- ctx context.Context
+- references  cref.IReferences
 </pre>
+<p>
+references to locate the component dependencies.
+</p>
 
 				
 				

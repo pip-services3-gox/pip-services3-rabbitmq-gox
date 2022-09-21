@@ -6,8 +6,8 @@ import (
 	queues "github.com/pip-services3-gox/pip-services3-rabbitmq-gox/queues"
 )
 
-// Creates RabbitMQMessageQueue components by their descriptors.
-// See RabbitMQMessageQueue
+//	Creates RabbitMQMessageQueue components by their descriptors.
+//	See RabbitMQMessageQueue
 type DefaultRabbitMQFactory struct {
 	*cbuild.Factory
 }

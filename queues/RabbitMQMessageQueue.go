@@ -79,7 +79,8 @@ type RabbitMQMessageQueue struct {
 }
 
 //  Creates a new instance of the message queue.
-//  name(optional) a queue name.
+//	Parameters:
+//  	- name(optional) a queue name.
 func NewEmptyRabbitMQMessageQueue(name string) *RabbitMQMessageQueue {
 	c := RabbitMQMessageQueue{
 		defaultCheckInterval: 1000,
@@ -118,8 +119,10 @@ func NewRabbitMQMessageQueue(name string, mqChanel *rabbitmq.Channel, queue stri
 	return c
 }
 
-//  Configures component by passing configuration parameters.
-//    - config configuration parameters to be set.
+//	Configures component by passing configuration parameters.
+//	Parameters:
+//		- ctx context.Context
+//	- config configuration parameters to be set.
 func (c *RabbitMQMessageQueue) Configure(ctx context.Context, config *cconf.ConfigParams) {
 	c.MessageQueue.Configure(ctx, config)
 
@@ -144,16 +147,18 @@ func (c *RabbitMQMessageQueue) checkOpened(correlationId string) error {
 	return nil
 }
 
-//  Checks if the component is opened.
-//  Retruns : true if the component has been opened and false otherwise.
+//	Checks if the component is opened.
+//	Retruns : true if the component has been opened and false otherwise.
 func (c *RabbitMQMessageQueue) IsOpen() bool {
 	return c.connection != nil && c.mqChanel != nil
 }
 
-//  Opens the component with given connection and credential parameters.
-//    - correlationId (optional) transaction id to trace execution through call chain.
-//    - connections connection parameters
-//    - credential credential parameters
+//	Opens the component with given connection and credential parameters.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
+//		- connections connection parameters
+//		- credential credential parameters
 func (c *RabbitMQMessageQueue) Open(ctx context.Context, correlationId string) error {
 
 	connection, err := c.ConnectionResolver.Resolve(correlationId)
@@ -241,8 +246,9 @@ func (c *RabbitMQMessageQueue) Open(ctx context.Context, correlationId string) e
 }
 
 // Close mwthod are closes component and frees used resources.
-//  Parameters:
-//   - correlationId (optional) transaction id to trace execution through call chain.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
 func (c *RabbitMQMessageQueue) Close(ctx context.Context, correlationId string) (err error) {
 
 	c.Lock.Lock()
@@ -274,9 +280,9 @@ func (c *RabbitMQMessageQueue) Close(ctx context.Context, correlationId string) 
 	return err
 }
 
-// ReadMessageCount method are reads the current number of messages in the queue to be delivered.
-// Returns count int64, err error
-// number of messages or error.
+//	ReadMessageCount method are reads the current number of messages in the queue to be delivered.
+//	Returns count int64, err error
+//	number of messages or error.
 func (c *RabbitMQMessageQueue) ReadMessageCount() (count int64, err error) {
 
 	err = c.checkOpened("")
@@ -315,9 +321,10 @@ func (c *RabbitMQMessageQueue) toMessage(envelope *rabbitmq.Delivery) *cqueues.M
 }
 
 //  Send method are sends a message into the queue.
-//  Parameters:
-//    - correlationId (optional) transaction id to trace execution through call chain.
-//    - message a message envelop to be sent.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
+//		- message a message envelop to be sent.
 func (c *RabbitMQMessageQueue) Send(ctx context.Context, correlationId string, message *cqueues.MessageEnvelope) (err error) {
 	err = c.checkOpened(correlationId)
 	if err != nil {
@@ -348,11 +355,12 @@ func (c *RabbitMQMessageQueue) Send(ctx context.Context, correlationId string, m
 	return err
 }
 
-//  Peeks a single incoming message from the queue without removing it.
-//  If there are no messages available in the queue it returns nil.
-//  Parameters:
-//    - correlationId (optional) transaction id to trace execution through call chain.
-//  Returns: a message
+//	Peeks a single incoming message from the queue without removing it.
+//	If there are no messages available in the queue it returns nil.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
+//	Returns: a message
 func (c *RabbitMQMessageQueue) Peek(ctx context.Context, correlationId string) (result *cqueues.MessageEnvelope, err error) {
 	err = c.checkOpened(correlationId)
 	if err != nil {
@@ -375,12 +383,13 @@ func (c *RabbitMQMessageQueue) Peek(ctx context.Context, correlationId string) (
 	return message, nil
 }
 
-//  PeekBatch method are peeks multiple incoming messages from the queue without removing them.
-//  If there are no messages available in the queue it returns an empty list.
-//  Parameters:
-//    - correlationId (optional) transaction id to trace execution through call chain.
-//    - messageCount a maximum number of messages to peek.
-//  Returns: a list with messages
+//	PeekBatch method are peeks multiple incoming messages from the queue without removing them.
+//	If there are no messages available in the queue it returns an empty list.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
+//		- messageCount a maximum number of messages to peek.
+//	Returns: a list with messages
 func (c *RabbitMQMessageQueue) PeekBatch(ctx context.Context, correlationId string, messageCount int64) (result []*cqueues.MessageEnvelope, err error) {
 	err = c.checkOpened(correlationId)
 	if err != nil {
@@ -403,10 +412,11 @@ func (c *RabbitMQMessageQueue) PeekBatch(ctx context.Context, correlationId stri
 }
 
 //  Receive method are receives an incoming message and removes it from the queue.
-//  Parameters:
-//    - correlationId (optional) transaction id to trace execution through call chain.
-//    - waitTimeout a timeout in milliseconds to wait for a message to come.
-//  Returns: a message
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
+//		- waitTimeout a timeout in milliseconds to wait for a message to come.
+//	Returns: a message
 func (c *RabbitMQMessageQueue) Receive(ctx context.Context, correlationId string, waitTimeout time.Duration) (result *cqueues.MessageEnvelope, err error) {
 
 	err = c.checkOpened(correlationId)
@@ -441,24 +451,26 @@ func (c *RabbitMQMessageQueue) Receive(ctx context.Context, correlationId string
 	return message, nil
 }
 
-//  Renews a lock on a message that makes it invisible from other receivers in the queue.
-//  This method is usually used to extend the message processing time.
-//  Important: This method is not supported by MQTT.
-//  Parameters:
-//    - message a message to extend its lock.
-//    - lockTimeout a locking timeout in milliseconds.
+//	Renews a lock on a message that makes it invisible from other receivers in the queue.
+//	This method is usually used to extend the message processing time.
+//	Important: This method is not supported by RabbitMQ.
+//	Parameters:
+//		- ctx context.Context
+//		- message a message to extend its lock.
+//		- lockTimeout a locking timeout in milliseconds.
 func (c *RabbitMQMessageQueue) RenewLock(ctx context.Context, message *cqueues.MessageEnvelope, lockTimeout time.Duration) (err error) {
 	// Operation is not supported
 	return nil
 }
 
-//  Returnes message into the queue and makes it available for all subscribers to receive it again.
-//  This method is usually used to return a message which could not be processed at the moment
-//  to repeat the attempt.Messages that cause unrecoverable errors shall be removed permanently
-//  or/and send to dead letter queue.
-//  Important: This method is not supported by MQTT.
-//  Parameters:
-//    - message a message to return.
+//	Returnes message into the queue and makes it available for all subscribers to receive it again.
+//	This method is usually used to return a message which could not be processed at the moment
+//	to repeat the attempt.Messages that cause unrecoverable errors shall be removed permanently
+//	or/and send to dead letter queue.
+//	Important: This method is not supported by RabbitMQ.
+//	Parameters:
+//		- ctx context.Context
+//		- message a message to return.
 func (c *RabbitMQMessageQueue) Abandon(ctx context.Context, message *cqueues.MessageEnvelope) (err error) {
 	err = c.checkOpened("")
 	if err != nil {
@@ -479,11 +491,12 @@ func (c *RabbitMQMessageQueue) Abandon(ctx context.Context, message *cqueues.Mes
 	return nil
 }
 
-//  Permanently removes a message from the queue.
-//  This method is usually used to remove the message after successful processing.
-//  Important: This method is not supported by MQTT.
-//  Parameters:
-//    - message a message to remove.
+//	Permanently removes a message from the queue.
+//	This method is usually used to remove the message after successful processing.
+//	Important: This method is not supported by RabbitMQ.
+//	Parameters:
+//		- ctx context.Context
+//		- message a message to remove.
 func (c *RabbitMQMessageQueue) Complete(ctx context.Context, message *cqueues.MessageEnvelope) (err error) {
 	err = c.checkOpened("")
 	if err != nil {
@@ -499,21 +512,23 @@ func (c *RabbitMQMessageQueue) Complete(ctx context.Context, message *cqueues.Me
 	return nil
 }
 
-//  Permanently removes a message from the queue and sends it to dead letter queue.
-//  Important: This method is not supported by MQTT.
-//  Parameters:
-//    - message a message to be removed.
-//  Returns:
+//	Permanently removes a message from the queue and sends it to dead letter queue.
+//	Important: This method is not supported by RabbitMQ.
+//	Parameters:
+//		- ctx context.Context
+//		- message a message to be removed.
+//	Returns: error
 func (c *RabbitMQMessageQueue) MoveToDeadLetter(ctx context.Context, message *cqueues.MessageEnvelope) (err error) {
 	// Operation is not supported
 	return nil
 }
 
-//  Listens for incoming messages and blocks the current thread until queue is closed.
-// Parameters:
-//    - correlationId (optional) transaction id to trace execution through call chain.
-//    - callback
-//  Returns:
+//	Listens for incoming messages and blocks the current thread until queue is closed.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
+//		- callback
+//  Returns: listen error
 func (c *RabbitMQMessageQueue) Listen(ctx context.Context, correlationId string, receiver cqueues.IMessageReceiver) error {
 	err := c.checkOpened("")
 	if err != nil {
@@ -574,10 +589,11 @@ func (c *RabbitMQMessageQueue) Listen(ctx context.Context, correlationId string,
 	return nil
 }
 
-//  Ends listening for incoming messages.
-//  When this method is call listen unblocks the thread and execution continues.
-//  Parameters:
-//    - correlationId (optional) transaction id to trace execution through call chain.
+//	Ends listening for incoming messages.
+//	When this method is call listen unblocks the thread and execution continues.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
 func (c *RabbitMQMessageQueue) EndListen(ctx context.Context, correlationId string) {
 	c.Lock.Lock()
 	if c.isListen {
@@ -589,10 +605,11 @@ func (c *RabbitMQMessageQueue) EndListen(ctx context.Context, correlationId stri
 	}
 }
 
-//  Clear method are clears component state.
-//  Parameters:
-//    - correlationId (optional) transaction id to trace execution through call chain.
-//  Returns:
+//	Clear method are clears component state.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
+//  Returns: error
 func (c *RabbitMQMessageQueue) Clear(ctx context.Context, correlationId string) (err error) {
 	err = c.checkOpened("")
 	if err != nil {

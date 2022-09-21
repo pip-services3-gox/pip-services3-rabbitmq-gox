@@ -44,18 +44,20 @@ func NewRabbitMQConnectionResolver() *RabbitMQConnectionResolver {
 	return &c
 }
 
-// Configure are configures component by passing configuration parameters.
-// Parameters:
-//  - config   *cconf.ConfigParams
-// configuration parameters to be set.
+//	Configure are configures component by passing configuration parameters.
+//	Parameters:
+//		- ctx context.Context
+//		- config   *cconf.ConfigParams
+//	configuration parameters to be set.
 func (c *RabbitMQConnectionResolver) Configure(ctx context.Context, config *cconf.ConfigParams) {
 	c.ConnectionResolver.Configure(ctx, config)
 	c.CredentialResolver.Configure(ctx, config)
 }
 
-// SetReferences are sets references to dependent components.
-// Parameters:
-//  - references  cref.IReferences
+//	SetReferences are sets references to dependent components.
+//	Parameters:
+//		- ctx context.Context
+//		- references  cref.IReferences
 //	references to locate the component dependencies.
 func (c *RabbitMQConnectionResolver) SetReferences(ctx context.Context, references cref.IReferences) {
 	c.ConnectionResolver.SetReferences(ctx, references)
@@ -122,12 +124,12 @@ func (c *RabbitMQConnectionResolver) composeOptions(connection *ccon.ConnectionP
 	return options
 }
 
-// Resolves RabbitMQ connection options from connection and credential parameters.
-// Parameters:
-//   - correlationId   string
-//   (optional) transaction id to trace execution through call chain.
-// Retruns options *cconf.ConfigParams, err error
-// receives resolved options or error.
+// 	Resolves RabbitMQ connection options from connection and credential parameters.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId (optional) transaction id to trace execution through call chain.
+//	Retruns options *cconf.ConfigParams, err error
+// 	receives resolved options or error.
 func (c *RabbitMQConnectionResolver) Resolve(correlationId string) (options *cconf.ConfigParams, err error) {
 	var connection *ccon.ConnectionParams
 	var credential *cauth.CredentialParams
@@ -152,13 +154,14 @@ func (c *RabbitMQConnectionResolver) Resolve(correlationId string) (options *cco
 	return options, nil
 }
 
-// Compose method are composes RabbitMQ connection options from connection and credential parameters.
-// Parameters:
-//   - correlationId  string  (optional) transaction id to trace execution through call chain.
-//   - connection  *ccon.ConnectionParams    connection parameters
-//   - credential  *cauth.CredentialParams   credential parameters
-// Returns: options *cconf.ConfigParams, err error
-// resolved options or error.
+//	Compose method are composes RabbitMQ connection options from connection and credential parameters.
+//	Parameters:
+//		- ctx context.Context
+//		- correlationId  string  (optional) transaction id to trace execution through call chain.
+//		- connection  *ccon.ConnectionParams    connection parameters
+//		- credential  *cauth.CredentialParams   credential parameters
+//	Returns: options *cconf.ConfigParams, err error
+//	resolved options or error.
 func (c *RabbitMQConnectionResolver) Compose(correlationId string, connection *ccon.ConnectionParams, credential *cauth.CredentialParams) (options *cconf.ConfigParams, err error) {
 	// Validate connections
 	err = c.validateConnection(correlationId, connection)
