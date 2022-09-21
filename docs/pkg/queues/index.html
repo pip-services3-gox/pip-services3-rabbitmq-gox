@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>queues - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="../../lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="../../lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.18.6";</script>
+<script src="../../lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="../index.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="../index.html">GoDoc</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6060/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package queues
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "queues"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="index.html#RabbitMQMessageQueue">type RabbitMQMessageQueue</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewEmptyRabbitMQMessageQueue">func NewEmptyRabbitMQMessageQueue(name string) *RabbitMQMessageQueue</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewRabbitMQMessageQueue">func NewRabbitMQMessageQueue(name string, mqChanel *rabbitmq.Channel, queue string) *RabbitMQMessageQueue</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewRabbitMQMessageQueueFromConfig">func NewRabbitMQMessageQueueFromConfig(name string, config *cconf.ConfigParams) *RabbitMQMessageQueue</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Abandon">func (c *RabbitMQMessageQueue) Abandon(ctx context.Context, message *cqueues.MessageEnvelope) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Clear">func (c *RabbitMQMessageQueue) Clear(ctx context.Context, correlationId string) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Close">func (c *RabbitMQMessageQueue) Close(ctx context.Context, correlationId string) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Complete">func (c *RabbitMQMessageQueue) Complete(ctx context.Context, message *cqueues.MessageEnvelope) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Configure">func (c *RabbitMQMessageQueue) Configure(ctx context.Context, config *cconf.ConfigParams)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.EndListen">func (c *RabbitMQMessageQueue) EndListen(ctx context.Context, correlationId string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.IsOpen">func (c *RabbitMQMessageQueue) IsOpen() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Listen">func (c *RabbitMQMessageQueue) Listen(ctx context.Context, correlationId string, receiver cqueues.IMessageReceiver) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.MoveToDeadLetter">func (c *RabbitMQMessageQueue) MoveToDeadLetter(ctx context.Context, message *cqueues.MessageEnvelope) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Open">func (c *RabbitMQMessageQueue) Open(ctx context.Context, correlationId string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Peek">func (c *RabbitMQMessageQueue) Peek(ctx context.Context, correlationId string) (result *cqueues.MessageEnvelope, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.PeekBatch">func (c *RabbitMQMessageQueue) PeekBatch(ctx context.Context, correlationId string, messageCount int64) (result []*cqueues.MessageEnvelope, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.ReadMessageCount">func (c *RabbitMQMessageQueue) ReadMessageCount() (count int64, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Receive">func (c *RabbitMQMessageQueue) Receive(ctx context.Context, correlationId string, waitTimeout time.Duration) (result *cqueues.MessageEnvelope, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.RenewLock">func (c *RabbitMQMessageQueue) RenewLock(ctx context.Context, message *cqueues.MessageEnvelope, lockTimeout time.Duration) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RabbitMQMessageQueue.Send">func (c *RabbitMQMessageQueue) Send(ctx context.Context, correlationId string, message *cqueues.MessageEnvelope) (err error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go">RabbitMQMessageQueue.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="RabbitMQMessageQueue">type <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=2300:2876#L50">RabbitMQMessageQueue</a>
+				<a class="permalink" href="index.html#RabbitMQMessageQueue">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Message queue that sends and receives messages via MQTT message broker.
+</p>
+<p>
+MQTT is a popular light-weight protocol to communicate IoT devices.
+</p>
+<p>
+Configuration parameters:
+</p>
+<pre>- topic:                         name of MQTT topic to subscribe
+
+connection(s):
+	- discovery_key:               (optional) a key to retrieve the connection from  IDiscovery
+	- host:                        host name or IP address
+	- port:                        port number
+	- uri:                         resource URI or connection string with all parameters in it
+
+credential(s):
+	- store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+	- username:                    user name
+	- password:                    user password
+</pre>
+<p>
+References:
+</p>
+<p>
+- *:logger:*:*:1.0             (optional) ILogger components to pass log messages
+- *:counters:*:*:1.0           (optional) ICounters components to pass collected measurements
+- *:discovery:*:*:1.0          (optional) IDiscovery services to resolve connections
+- *:credential-store:*:*:1.0   (optional) Credential stores to resolve credentials
+</p>
+<p>
+Example:
+</p>
+<pre>ctx := context.Background()
+queue := queues.NewEmptyRabbitMQMessageQueue(&#34;myqueue&#34;)
+queue.Configure(ctx, config.NewConfigParamsFromTuples(
+	&#34;exchange&#34;, &#34;my_exchange&#34;,
+	&#34;queue&#34;, &#34;my_exchange&#34;,
+	&#34;options.auto_create&#34;, true,
+	&#34;connection.host&#34;, &#34;5672&#34;,
+	&#34;connection.port&#34;, &#34;localhost&#34;,
+	&#34;credential.username&#34;, &#34;user&#34;,
+	&#34;credential.password&#34;, &#34;password&#34;,
+))
+_ = queue.Open(ctx, &#34;123&#34;)
+_ = queue.Send(ctx, &#34;123&#34;, cqueues.NewMessageEnvelope(&#34;&#34;, &#34;mymessage&#34;, []byte(&#34;ABC&#34;)))
+message, _ := queue.Receive(ctx, &#34;123&#34;, 10000*time.Millisecond)
+if message != nil {
+	// ...
+	queue.Complete(ctx, message)
+}
+</pre>
+
+			<pre>type RabbitMQMessageQueue struct {
+    *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageQueue">MessageQueue</a>
+
+<span id="RabbitMQMessageQueue.Interval"></span>    Interval <a href="http://localhost:6060/pkg/time/">time</a>.<a href="http://localhost:6060/pkg/time/#Duration">Duration</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewEmptyRabbitMQMessageQueue">func <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=2964:3032#L73">NewEmptyRabbitMQMessageQueue</a>
+					<a class="permalink" href="index.html#NewEmptyRabbitMQMessageQueue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewEmptyRabbitMQMessageQueue(name <a href="http://localhost:6060/pkg/builtin/#string">string</a>) *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a></pre>
+				<p>
+Creates a new instance of the message queue.
+name(optional) a queue name.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewRabbitMQMessageQueue">func <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=3935:4040#L104">NewRabbitMQMessageQueue</a>
+					<a class="permalink" href="index.html#NewRabbitMQMessageQueue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewRabbitMQMessageQueue(name <a href="http://localhost:6060/pkg/builtin/#string">string</a>, mqChanel *<a href="http://localhost:6060/pkg/github.com/streadway/amqp/">rabbitmq</a>.<a href="http://localhost:6060/pkg/github.com/streadway/amqp/#Channel">Channel</a>, queue <a href="http://localhost:6060/pkg/builtin/#string">string</a>) *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="NewRabbitMQMessageQueueFromConfig">func <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=3702:3803#L96">NewRabbitMQMessageQueueFromConfig</a>
+					<a class="permalink" href="index.html#NewRabbitMQMessageQueueFromConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewRabbitMQMessageQueueFromConfig(name <a href="http://localhost:6060/pkg/builtin/#string">string</a>, config *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-commons-gox/config/">cconf</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-commons-gox/config/#ConfigParams">ConfigParams</a>) *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="RabbitMQMessageQueue.Abandon">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=14299:14404#L452">Abandon</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Abandon">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Abandon(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, message *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageEnvelope">MessageEnvelope</a>) (err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Returnes message into the queue and makes it available for all subscribers to receive it again.
+This method is usually used to return a message which could not be processed at the moment
+to repeat the attempt.Messages that cause unrecoverable errors shall be removed permanently
+or/and send to dead letter queue.
+Important: This method is not supported by MQTT.
+Parameters:
+</p>
+<pre>- message a message to return.
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Clear">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=18247:18338#L586">Clear</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Clear">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Clear(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>) (err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Clear method are clears component state.
+Parameters:
+</p>
+<pre>- correlationId (optional) transaction id to trace execution through call chain.
+</pre>
+<p>
+Returns:
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Close">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=7647:7738#L236">Close</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Close(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>) (err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Close mwthod are closes component and frees used resources.
+</p>
+<pre>Parameters:
+ - correlationId (optional) transaction id to trace execution through call chain.
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Complete">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=15087:15193#L477">Complete</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Complete">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Complete(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, message *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageEnvelope">MessageEnvelope</a>) (err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Permanently removes a message from the queue.
+This method is usually used to remove the message after successful processing.
+Important: This method is not supported by MQTT.
+Parameters:
+</p>
+<pre>- message a message to remove.
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Configure">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=4259:4348#L113">Configure</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Configure">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Configure(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, config *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-commons-gox/config/">cconf</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-commons-gox/config/#ConfigParams">ConfigParams</a>)</pre>
+				<p>
+Configures component by passing configuration parameters.
+</p>
+<pre>- config configuration parameters to be set.
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.EndListen">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=17856:17939#L571">EndListen</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.EndListen">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) EndListen(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>)</pre>
+				<p>
+Ends listening for incoming messages.
+When this method is call listen unblocks the thread and execution continues.
+Parameters:
+</p>
+<pre>- correlationId (optional) transaction id to trace execution through call chain.
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.IsOpen">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=5563:5607#L139">IsOpen</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.IsOpen">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) IsOpen() <a href="http://localhost:6060/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Checks if the component is opened.
+Retruns : true if the component has been opened and false otherwise.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Listen">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=16140:16261#L507">Listen</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Listen">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Listen(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>, receiver <a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#IMessageReceiver">IMessageReceiver</a>) <a href="http://localhost:6060/pkg/builtin/#error">error</a></pre>
+				<pre>Listens for incoming messages and blocks the current thread until queue is closed.
+</pre>
+<p>
+Parameters:
+</p>
+<pre>  - correlationId (optional) transaction id to trace execution through call chain.
+  - callback
+Returns:
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.MoveToDeadLetter">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=15748:15862#L497">MoveToDeadLetter</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.MoveToDeadLetter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) MoveToDeadLetter(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, message *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageEnvelope">MessageEnvelope</a>) (err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Permanently removes a message from the queue and sends it to dead letter queue.
+Important: This method is not supported by MQTT.
+Parameters:
+</p>
+<pre>- message a message to be removed.
+</pre>
+<p>
+Returns:
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Open">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=5913:5997#L147">Open</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Open">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Open(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>) <a href="http://localhost:6060/pkg/builtin/#error">error</a></pre>
+				<p>
+Opens the component with given connection and credential parameters.
+</p>
+<pre>- correlationId (optional) transaction id to trace execution through call chain.
+- connections connection parameters
+- credential credential parameters
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Peek">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=10642:10765#L346">Peek</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Peek">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Peek(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>) (result *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageEnvelope">MessageEnvelope</a>, err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Peeks a single incoming message from the queue without removing it.
+If there are no messages available in the queue it returns nil.
+Parameters:
+</p>
+<pre>- correlationId (optional) transaction id to trace execution through call chain.
+</pre>
+<p>
+Returns: a message
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.PeekBatch">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=11539:11689#L374">PeekBatch</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.PeekBatch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) PeekBatch(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>, messageCount <a href="http://localhost:6060/pkg/builtin/#int64">int64</a>) (result []*<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageEnvelope">MessageEnvelope</a>, err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+PeekBatch method are peeks multiple incoming messages from the queue without removing them.
+If there are no messages available in the queue it returns an empty list.
+Parameters:
+</p>
+<pre>- correlationId (optional) transaction id to trace execution through call chain.
+- messageCount a maximum number of messages to peek.
+</pre>
+<p>
+Returns: a list with messages
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.ReadMessageCount">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=8373:8447#L270">ReadMessageCount</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.ReadMessageCount">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) ReadMessageCount() (count <a href="http://localhost:6060/pkg/builtin/#int64">int64</a>, err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+ReadMessageCount method are reads the current number of messages in the queue to be delivered.
+Returns count int64, err error
+number of messages or error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Receive">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=12485:12638#L400">Receive</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Receive">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Receive(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>, waitTimeout <a href="http://localhost:6060/pkg/time/">time</a>.<a href="http://localhost:6060/pkg/time/#Duration">Duration</a>) (result *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageEnvelope">MessageEnvelope</a>, err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Receive method are receives an incoming message and removes it from the queue.
+Parameters:
+</p>
+<pre>- correlationId (optional) transaction id to trace execution through call chain.
+- waitTimeout a timeout in milliseconds to wait for a message to come.
+</pre>
+<p>
+Returns: a message
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.RenewLock">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=13669:13803#L440">RenewLock</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.RenewLock">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) RenewLock(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, message *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageEnvelope">MessageEnvelope</a>, lockTimeout <a href="http://localhost:6060/pkg/time/">time</a>.<a href="http://localhost:6060/pkg/time/#Duration">Duration</a>) (err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Renews a lock on a message that makes it invisible from other receivers in the queue.
+This method is usually used to extend the message processing time.
+Important: This method is not supported by MQTT.
+Parameters:
+</p>
+<pre>- message a message to extend its lock.
+- lockTimeout a locking timeout in milliseconds.
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="RabbitMQMessageQueue.Send">func (*RabbitMQMessageQueue) <a href="http://localhost:6060/src/queues/RabbitMQMessageQueue.go?s=9523:9647#L311">Send</a>
+					<a class="permalink" href="index.html#RabbitMQMessageQueue.Send">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="index.html#RabbitMQMessageQueue">RabbitMQMessageQueue</a>) Send(ctx <a href="http://localhost:6060/pkg/context/">context</a>.<a href="http://localhost:6060/pkg/context/#Context">Context</a>, correlationId <a href="http://localhost:6060/pkg/builtin/#string">string</a>, message *<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/">cqueues</a>.<a href="http://localhost:6060/pkg/github.com/pip-services3-gox/pip-services3-messaging-gox/queues/#MessageEnvelope">MessageEnvelope</a>) (err <a href="http://localhost:6060/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Send method are sends a message into the queue.
+Parameters:
+</p>
+<pre>- correlationId (optional) transaction id to trace execution through call chain.
+- message a message envelop to be sent.
+</pre>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.18.6.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6060/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>
