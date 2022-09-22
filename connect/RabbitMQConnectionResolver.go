@@ -99,7 +99,7 @@ func (c *RabbitMQConnectionResolver) composeOptions(connection *ccon.ConnectionP
 	if credential == nil {
 		credential = cauth.NewEmptyCredentialParams()
 	}
-	options := connection.Override(&credential.ConfigParams)
+	options := connection.Override(credential.ConfigParams)
 
 	// Compose uri
 	if _, ok := options.Get("uri"); !ok {
