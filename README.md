@@ -4,9 +4,9 @@ This library is a part of [Pip.Services](https://github.com/pip-services/pip-ser
 The RabbitMQ module contains a set of components for working with the message queue in RabbitMQ through the AMQP protocol.
 
 The module contains the following packages:
-- [**Build**](https://godoc.org/github.com/pip-services3-gox/pip-services3-rabbitmq-gox/build) - Factory for constructing module components
-- [**Connect**](https://godoc.org/github.com/pip-services3-gox/pip-services3-rabbitmq-gox/connect) - Components for creating and configuring a connection with RabbitMQ
-- [**Queues**](https://godoc.org/github.com/pip-services3-gox/pip-services3-rabbitmq-gox/queues) - Message Queuing components that implement the standard [Messaging](https://github.com/pip-services3-gox/pip-services3-messaging-gox) module interface
+- **Build** - Factory for constructing module components
+- **Connect** - Components for creating and configuring a connection with RabbitMQ
+- **Queues** - Message Queuing components that implement the standard [Messaging](https://github.com/pip-services3-gox/pip-services3-messaging-gox) module interface
 
 <a name="links"></a> Quick links:
 
