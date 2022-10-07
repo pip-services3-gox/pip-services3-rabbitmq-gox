@@ -3,6 +3,8 @@ name: Pip.Services RabbitMQ Gox Delivery
 # Configure trigger rules
 on: 
   push:
+    branches:
+      - main
     paths:
     - '**'
     - '!README.md'
